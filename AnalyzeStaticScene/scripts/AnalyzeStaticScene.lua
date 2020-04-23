@@ -25,7 +25,7 @@ print('AppEngine version: ' .. Engine.getVersion())
 local FILE_PATH = 'resources/static_scene.pcd'
 
 -- Pausing duration for demonstration purpose only
-local PAUSE = 2000
+local DELAY = 2000
 
 -- Set up viewer and decorations
 local viewer = View.create()
@@ -58,7 +58,7 @@ local function viewPointCloud(pointCloud, shape, deco)
     viewer:addShape(shape, deco)
   end
   viewer:present()
-  Script.sleep(PAUSE) -- For demonstration purpose only
+  Script.sleep(DELAY) -- For demonstration purpose only
 end
 
 -- Fit plane, show inliers, show outliers, return outlier cloud
