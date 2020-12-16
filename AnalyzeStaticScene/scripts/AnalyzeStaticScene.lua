@@ -28,8 +28,7 @@ local FILE_PATH = 'resources/static_scene.pcd'
 local DELAY = 2000
 
 -- Set up viewer and decorations
-local viewer = View.create()
-viewer:setID('viewer3D')
+local viewer = View.create('viewer3D1')
 
 local shapeDeco = View.ShapeDecoration.create()
 shapeDeco:setFillColor(0, 0, 255, 20)
