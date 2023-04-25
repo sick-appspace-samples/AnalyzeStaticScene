@@ -10,14 +10,13 @@ local FILE_PATH = 'resources/static_scene.pcd'
 local DELAY = 2000
 
 -- Set up viewer and decorations
-local viewer = View.create('viewer3D1')
+local viewer = View.create()
 
 local shapeDeco = View.ShapeDecoration.create()
 shapeDeco:setFillColor(0, 0, 255, 20)
 
 local pcDeco = View.PointCloudDecoration.create()
-pcDeco:setPointSize(1)
-pcDeco:setIntensityColormap(1)
+pcDeco:setPointSize(1):setIntensityColormap(1)
 viewer:setDefaultDecoration(pcDeco)
 
 -- Set up ShapeFitter
