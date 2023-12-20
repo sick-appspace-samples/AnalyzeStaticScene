@@ -10,14 +10,13 @@ local FILE_PATH = 'resources/static_scene.pcd'
 local DELAY = 2000
 
 -- Set up viewer and decorations
-local viewer = View.create('viewer3D1')
+local viewer = View.create()
 
 local shapeDeco = View.ShapeDecoration.create()
 shapeDeco:setFillColor(0, 0, 255, 20)
 
 local pcDeco = View.PointCloudDecoration.create()
-pcDeco:setPointSize(1)
-pcDeco:setIntensityColormap(1)
+pcDeco:setPointSize(1):setIntensityColormap(1)
 viewer:setDefaultDecoration(pcDeco)
 
 -- Set up ShapeFitter
@@ -31,7 +30,7 @@ shapeFitter:setOptimizeCoefficients(true)
 
 --Start of Function and Event Scope---------------------------------------------
 
--- View point cloud and optional shape
+---View point cloud and optional shape
 local function viewPointCloud(pointCloud, shape, deco)
   viewer:clear()
   viewer:addPointCloud(pointCloud)
@@ -42,8 +41,9 @@ local function viewPointCloud(pointCloud, shape, deco)
   Script.sleep(DELAY) -- For demonstration purpose only
 end
 
--- Fit plane, show inliers, show outliers, return outlier cloud
---@fitAndRemovePlane(cloud:PointCloud):PointCloud
+---Fit plane, show inliers, show outliers, return outlier cloud
+---@param cloud PointCloud
+---@return PointCloud outlierCloud
 local function fitAndRemovePlane(cloud)
   -- Fit plane
   local tic = DateTime.getTimestamp()
@@ -70,7 +70,7 @@ local function fitAndRemovePlane(cloud)
   return outlierCloud
 end
 
--- Entry point after Engine.OnStarted event
+---Entry point after Engine.OnStarted event
 local function handleOnStarted()
   -- Load a point cloud from a file
   local cloud = PointCloud.load(FILE_PATH)
